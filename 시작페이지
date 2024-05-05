@@ -19,13 +19,31 @@
     <input type="submit" value="공지사항 및 일정" name="button2" onclick=alert('어서오세요')>
 </form>
 <div id="script1">
+<h1 id="clock" style="color: gray">00:00</h1>
 <script >
     function getTime(){
         let LocalDate=new Date();
+        let localDate = new Date();
+        let year = localDate.getFullYear();
+        let month = localDate.getMonth()
+        let clockDate=localDate.getDate()
+        let day = ['일', '월', '화', '수', '목', '금', '토'];
+        let dates = localDate.getDay();
+        let hour = localDate.getHours();
+        let m = localDate.getMinutes();
+        let sen = localDate.getSeconds();
+        hour=hour<10 ? "0"+hour:hour
+        m=m<10 ? "0"+m:m;
+        sen=sen<10 ? "0"+sen:sen;
+        dater.innerText= `${year}년 ${month+1}월 ${clockDate}일 ${day[dates]}요일 ${hour}시 ${m}분 ${sen}초`
 
-        document.write(LocalDate)
     }
-    setTimeout(getTime,1000)
+    function time(){
+        getTime();
+        //최초로 함수를 실행
+        setInterval(getTime,1000)
+    }
+    time();
 </script>
 </div>
 <hr/>
